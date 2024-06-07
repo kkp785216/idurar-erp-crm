@@ -32,7 +32,7 @@ RUN npm install -g pm2 && \
     # Clean npm cache
     npm cache clean --force
 # Copy the built app from the builder image
-COPY --from=builder /app /
+COPY --from=builder /app ./
 # Expose the port that the application will run on
 EXPOSE 8888
 # Start the application using PM2
