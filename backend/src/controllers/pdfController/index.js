@@ -9,9 +9,6 @@ const { useMoney, useDate } = require('@/settings');
 
 const pugFiles = ['invoice', 'offer', 'quote', 'payment'];
 
-require('dotenv').config({ path: '.env' });
-require('dotenv').config({ path: '.env.local' });
-
 exports.generatePdf = async (
   modelName,
   info = { filename: 'pdf_file', format: 'A5', targetLocation: '' },

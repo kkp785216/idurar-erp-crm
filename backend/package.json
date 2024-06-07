@@ -6,12 +6,16 @@
     "node": "20.9.0"
   },
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js --ignore public/",
+    "start": "npm ru start:prod",
+    "start:dev": "env-cmd -f environments/.env.dev node src/server.js",
+    "start:prod": "env-cmd -f environments/.env.prod node src/server.js",
+    "dev": "npm run dev:dev",
+    "dev:prod": "env-cmd -f environments/.env.prod nodemon src/server.js --ignore public/",
+    "dev:dev": "env-cmd -f environments/.env.dev nodemon src/server.js --ignore public/",
     "production": "NODE_ENV=production",
-    "setup": "node src/setup/setup.js",
-    "upgrade": "node src/setup/upgrade.js",
-    "reset": "node src/setup/reset.js"
+    "setup": "env-cmd -f environments/.env.dev node src/setup/setup.js",
+    "upgrade": "env-cmd -f environments/.env.dev node src/setup/upgrade.js",
+    "reset": "env-cmd -f environments/.env.dev node src/setup/reset.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.509.0",
@@ -21,6 +25,7 @@
     "cors": "^2.8.5",
     "currency.js": "2.0.4",
     "dotenv": "16.3.1",
+    "env-cmd": "^10.1.0",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.3",
     "express-rate-limit": "^7.1.5",
