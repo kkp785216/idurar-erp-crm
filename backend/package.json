@@ -13,7 +13,7 @@
     "dev:prod": "env-cmd -f environments/.env.prod nodemon src/server.js --ignore public/",
     "dev:dev": "env-cmd -f environments/.env.dev nodemon src/server.js --ignore public/",
     "production": "NODE_ENV=production",
-    "setup": "env-cmd -f environments/.env.dev node src/setup/setup.js",
+    "setup": "env-cmd -f environments/.env.prod node src/setup/setup.js",
     "upgrade": "env-cmd -f environments/.env.dev node src/setup/upgrade.js",
     "reset": "env-cmd -f environments/.env.dev node src/setup/reset.js"
   },
