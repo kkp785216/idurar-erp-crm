@@ -6,7 +6,7 @@
     "node": "20.9.0"
   },
   "scripts": {
-    "start": "npm ru start:prod",
+    "start": "npm run start:prod",
     "start:dev": "env-cmd -f environments/.env.dev node src/server.js",
     "start:prod": "env-cmd -f environments/.env.prod node src/server.js",
     "dev": "npm run dev:dev",
