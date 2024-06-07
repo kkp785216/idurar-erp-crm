@@ -15,8 +15,6 @@ RUN npm install -g npm@10.2.4
 RUN npm install
 RUN npm install -g pm2
 COPY . .
-# build the app
-RUN npm run build:$CONFIG_ENV
 # clean all depencies
 RUN rm -rf node_modules
 RUN npm cache clean --force
