@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - "frontend-stage-*"
+      - "frontend-prod-*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set Docker image tag based on branch
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/frontend-prod"* ]]; then
+            export CONFIG_ENV=prod
+          else
+            export CONFIG_ENV=dev
+          fi
+          echo "CONFIG_ENV=$CONFIG_ENV" >> $GITHUB_ENV
+      - name: Build the Docker image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/idurar-frontend:$CONFIG_ENV-1.0.0 --build-arg CONFIG_ENV=$CONFIG_ENV .
+
+      - name: Log in to Docker
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/idurar-frontend:$CONFIG_ENV-1.0.0
