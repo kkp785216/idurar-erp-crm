@@ -16,6 +16,7 @@
     "cross-env": "7.0.3",
     "currency.js": "2.0.4",
     "dayjs": "^1.11.10",
+    "env-cmd": "^10.1.0",
     "just-compare": "^2.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,12 +25,18 @@
     "react-router-dom": "^6.22.0",
     "redux": "^5.0.1",
     "reselect": "^5.1.0",
+    "serve": "^14.2.3",
     "shortid": "^2.2.16",
     "vite": "^5.1.4"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "start": "serve -s dist",
+    "dev": "npm run dev:dev",
+    "dev:dev": "env-cmd -f environments/.env.dev vite",
+    "dev:prod": "env-cmd -f environments/.env.prod vite",
+    "build": "npm run build:prod",
+    "build:stage": "env-cmd -f environments/.env.dev vite build",
+    "build:prod": "env-cmd -f environments/.env.prod vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "dev:remote": "cross-env VITE_DEV_REMOTE=remote npm run dev"
