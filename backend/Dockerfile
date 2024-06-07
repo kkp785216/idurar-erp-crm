@@ -13,7 +13,7 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install -g npm@10.2.4
 RUN npm install
-RUN npm install -g pm2
+RUN npm install pm2 --save
 COPY . .
 # clean all depencies
 RUN rm -rf node_modules
