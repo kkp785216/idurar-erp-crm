@@ -32,4 +32,4 @@ COPY --from=builder . .
 # Expose the port that the application will run on
 EXPOSE 8888
 # Start the application using PM2
-CMD ["npx", "pm2-runtime", "start", "npm", "run", "start"]
+CMD ["npx", "pm2-runtime", "start", "npm", "--", "start"]
