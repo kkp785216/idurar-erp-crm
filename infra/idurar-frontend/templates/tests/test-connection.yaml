@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: "{{ include "idurar-frontend.fullname" . }}-test-connection"
+  namespace: {{ .Values.namespace | default .Release.Namespace }}
   labels:
     {{- include "idurar-frontend.labels" . | nindent 4 }}
   annotations:
