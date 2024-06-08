@@ -2,14 +2,14 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-namespace: idurar-prod
+namespace: idurar-devk
 replicaCount: 1
 
 image:
   repository: kkp785216/idurar-frontend
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "prod-1.0.0"
+  tag: "dev-1.0.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -42,7 +42,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 3000
+  port: 3005
   targetPort: 3000
 
 ingress:
@@ -52,7 +52,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: idurar.com
+    - host: dev.idurar.com
       paths:
         - path: /
           pathType: Prefix
