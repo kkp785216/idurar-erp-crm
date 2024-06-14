@@ -11,7 +11,8 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "prod-1.0.0"
 
-imagePullSecrets: []
+imagePullSecrets: 
+  - name: idurar-frontend
 nameOverride: ""
 fullnameOverride: ""
 
