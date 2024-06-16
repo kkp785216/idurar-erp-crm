@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 namespace: idurar-prod
-replicaCount: 1
+replicaCount: 2
 
 image:
   repository: kkp785216/idurar-frontend
@@ -45,6 +45,7 @@ service:
   type: ClusterIP
   port: 80
   targetPort: 3000
+  NodePort: 30000
 
 ingress:
   enabled: false
